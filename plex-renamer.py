@@ -41,7 +41,7 @@ class OGTV:
     def returnEpisodes(self):
         episodeList = []
         for episode in self.filelist:
-            episodeList.append(self.title + " s" + "{:02d}".format(int(self.season)) + "e" + "{:02d}".format(int(self.returnEpisode(episode))) + " (" + episode + ")")
+            episodeList.append(self.title + " - s" + "{:02d}".format(int(self.season)) + "e" + "{:02d}".format(int(self.returnEpisode(episode))) + " - (" + episode + ")")
         return episodeList
 
     def episodeTuple(self):
