@@ -31,7 +31,7 @@ class OGTV:
         return episodeIndex
     
     def returnEpisode(self, name):
-        return re.split(r'[ _-]', name)[int(self.episodeIndex)]
+        return re.split(r'[ _-]',name)[int(self.episodeIndex)]
     
     def findSeason(self, name):
         print(f"What season of this show is '{name}':\n")
@@ -41,7 +41,7 @@ class OGTV:
     def returnEpisodes(self):
         episodeList = []
         for episode in self.filelist:
-            episodeList.append(self.title + " s" + self.season + "e" + self.returnEpisode(episode))
+            episodeList.append(self.title + " s" + "{:02d}".format(int(self.season)) + "e" + "{:02d}".format(int(self.returnEpisode(episode))))
         return episodeList
 
     def episodeTuple(self):
