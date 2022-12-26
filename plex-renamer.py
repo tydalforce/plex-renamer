@@ -1,4 +1,4 @@
-import os
+import os, re
 
 def renameEpisodes(show):
     for tup in show.episodeTuple():
@@ -11,7 +11,7 @@ class OGTV:
     def __init__(self, filelist):
         self.filelist = filelist
         filename = filelist[0]
-        self.splitName = filename.split()
+        self.splitName = re.split(r'[ _-]', filename)
         self.title = self.findTitle(filename)
         self.episodeIndex = self.findEpisode(filename)
         self.season = self.findSeason(filename)
@@ -24,14 +24,14 @@ class OGTV:
     
     def findEpisode(self, name):
         print(f"Which of these fields are the episode number?\n")
-        for word in name.split():
-            print(name.split().index(word), word)
+        for word in re.split(r'[ _-]', name):
+            print(re.split(r'[ _-]', name).index(word), word)
         
         episodeIndex = input()
         return episodeIndex
     
     def returnEpisode(self, name):
-        return name.split()[int(self.episodeIndex)]
+        return re.split(r'[ _-]', name)[int(self.episodeIndex)]
     
     def findSeason(self, name):
         print(f"What season of this show is '{name}':\n")
